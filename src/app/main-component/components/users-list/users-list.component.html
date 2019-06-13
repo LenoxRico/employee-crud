@@ -1,13 +1,13 @@
-<div *ngIf="employeeStorage$ | async as employeeState" class="persona-card" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
+<div *ngIf="employeeStorage$ | async as employeeState" class="employee-card" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
   <div></div>
   <mat-card>
     <div class="header">
       <h2>{{title}}</h2>
     </div>
-    <mat-card-content class="persona-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <mat-card-content class="employee-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
       <div fxLayout="column" fxLayoutGap="25px">
         <div *ngFor="let employee of employeeState.employees" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
-          <button mat-button color="primary" class="persona" (click)="openDialog(employee)">
+          <button mat-button color="primary" class="employee" (click)="openDialog(employee)">
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
               <mat-icon>{{ employee.icon }}</mat-icon>
               <span
