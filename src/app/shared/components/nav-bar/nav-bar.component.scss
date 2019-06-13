@@ -1,0 +1,12 @@
+.navbar{
+    display: flex;
+    flex-direction: column;
+    &__options{
+        display: flex;
+        justify-content: space-between;
+    }
+    img{
+        align-self: center;
+    }
+    
+}

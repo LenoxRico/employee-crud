@@ -1,0 +1,23 @@
+<div *ngIf="employeeStorage$ | async as employeeState" class="persona-card" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
+  <div></div>
+  <mat-card>
+    <div class="header">
+      <h2>{{title}}</h2>
+    </div>
+    <mat-card-content class="persona-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
+      <div fxLayout="column" fxLayoutGap="25px">
+        <div *ngFor="let employee of employeeState.employees" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
+          <button mat-button color="primary" class="persona" (click)="openDialog(employee)">
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <mat-icon>{{ employee.icon }}</mat-icon>
+              <span
+                >{{ employee.employee_name }} -
+                {{ employee.employee_age }} years old</span
+              >
+            </div>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

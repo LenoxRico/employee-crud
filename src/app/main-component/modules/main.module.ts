@@ -1,13 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@src/app/shared/modules';
-import { MainComponent } from '../components';
+import { UsersListComponent } from '../components';
 import { MainRoutingModule } from './main-routing.module';
+import { EmployeeService } from '../services';
+import { StoreModule } from '@ngrx/store';
+import { employeeReducer } from '../reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeeEffect } from '../effects';
+import { EmployeeModalComponent } from '../components';
 
 @NgModule({
-  declarations: [MainComponent],
-  entryComponents: [MainComponent],
-  imports: [CommonModule, MainRoutingModule, SharedModule],
-  providers: []
+  declarations: [UsersListComponent,EmployeeModalComponent],
+  entryComponents: [UsersListComponent,EmployeeModalComponent],
+  imports: [
+    CommonModule, 
+    MainRoutingModule, 
+    SharedModule,
+    StoreModule.forFeature('employee', employeeReducer),
+    EffectsModule.forFeature([EmployeeEffect])
+  ],
+  providers: [EmployeeService]
 })
 export class MainModule {}

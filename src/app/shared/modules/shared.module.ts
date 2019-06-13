@@ -6,25 +6,28 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SpinnerComponent, InputErrorMessagesComponent } from '../components';
+import { SpinnerComponent, InputErrorMessagesComponent, NavBarComponent } from '../components';
 
-import { ValidationService } from '../services';
+import { ValidationService, ObservableService } from '../services';
+import { AngularMaterialsModule } from './angular-materials/angular-materials.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [SpinnerComponent, InputErrorMessagesComponent],
-  imports: [CommonModule, FlexLayoutModule, RouterModule, ReactiveFormsModule, TranslateModule],
+  declarations: [SpinnerComponent, InputErrorMessagesComponent, NavBarComponent],
+  imports: [CommonModule, FlexLayoutModule, RouterModule, ReactiveFormsModule, TranslateModule, AngularMaterialsModule],
   exports: [
     FlexLayoutModule,
     SpinnerComponent,
     RouterModule,
     TranslateModule,
     ReactiveFormsModule,
-    InputErrorMessagesComponent
+    InputErrorMessagesComponent,
+    NavBarComponent,
+    AngularMaterialsModule
   ],
-  providers: [ ValidationService]
+  providers: [ValidationService, ObservableService]
 })
 export class SharedModule {}
