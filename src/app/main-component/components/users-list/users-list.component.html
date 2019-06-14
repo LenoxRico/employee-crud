@@ -6,7 +6,7 @@
     </div>
     <mat-card-content class="employee-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
       <div fxLayout="column" fxLayoutGap="25px">
-        <div *ngFor="let employee of employeeState.employees" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
+        <div *ngFor="let employee of employeeState" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
           <button mat-button color="primary" class="employee" (click)="openDialog(employee)">
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
               <mat-icon>{{ employee.icon }}</mat-icon>
