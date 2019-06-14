@@ -6,3 +6,11 @@ export interface Employee {
   profile_image: string;
   icon?: string;
 }
+
+export interface EmployeeUpdate {
+  id?: number;
+  name: string,
+  salary: number,
+  age: number,
+  icon?: string;
+}

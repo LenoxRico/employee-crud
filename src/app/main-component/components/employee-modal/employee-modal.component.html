@@ -2,8 +2,10 @@
 <mat-dialog-content fxLayout="column" fxLayoutGap="25px">
   <div fxLayout.xs="column" fxLayout="row" fxLayoutGap="25px">
     <div fxFlex fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start center">
-      <div>
-        <h3 class="bold">{{ employee.employee_name }}</h3>
+      <div fxLayout="column">
+        <h3 class="bold" [hidden]='!disableButton'>{{ employee.employee_name }}</h3>
+        <label class="bold" [hidden]='disableButton' for="nameEmployee">Name:</label>
+        <input id='nameEmployee' type="text" [(ngModel)]="nameEmployee" [hidden]='disableButton'>
       </div>
       <div>
         <img class="avatar" [src]="employee.profile_image" [alt]="employee.employee_name" />
@@ -12,12 +14,15 @@
     <div fxFlex fxLayout="column" fxLayoutGap="15px">
       <div>
         <h3 class="bold">Age:</h3>
-        <span>{{ employee.employee_age }} years old</span>
+        <span [hidden]='!disableButton'>{{ employee.employee_age }} years old</span>
+        <label hidden for="ageEmployee">Name:</label>
+        <input id='ageEmployee' type="text" [(ngModel)]="ageEmployee" [hidden]='disableButton'>
       </div>
       <div>
         <h3 class="bold">Salary:</h3>
-        <span>{{ employee.employee_salary | currency }}</span
-        >
+        <span [hidden]='!disableButton'>{{ employee.employee_salary | currency }}</span>
+        <label hidden for="salaryEmployee">Name:</label>
+        <input id='salaryEmployee' type="text" [(ngModel)]="salaryEmployee" [hidden]='disableButton'>
       </div>
       <div>
         <h3 class="bold">Seniority:</h3>
@@ -28,7 +33,7 @@
   <div fxLayout.xs="column" fxLayout.sm="column" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
     <button mat-raised-button color="primary"(click)="edit()">Edit</button>
     <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
-    <button mat-raised-button color="accent" [disabled]="disableButton" (click)="accept()">
+    <button mat-raised-button color="accent" [disabled]="disableButton" (click)="accept(employee.id)">
       Save
     </button>
   </div>

@@ -10,15 +10,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffect } from '../effects';
 import { EmployeeModalComponent } from '../components';
 import { MatPaginatorModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [UsersListComponent,EmployeeModalComponent],
-  entryComponents: [UsersListComponent,EmployeeModalComponent],
+  declarations: [UsersListComponent, EmployeeModalComponent],
+  entryComponents: [UsersListComponent, EmployeeModalComponent],
   imports: [
-    CommonModule, 
-    MainRoutingModule, 
+    CommonModule,
+    MainRoutingModule,
     SharedModule,
     MatPaginatorModule,
+    FormsModule,
     StoreModule.forFeature('employee', employeeReducer),
     EffectsModule.forFeature([EmployeeEffect])
   ],

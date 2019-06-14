@@ -1,19 +1,22 @@
 import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
-import { Employee } from '../../interfaces';
+import { Employee, EmployeeUpdate } from '../../interfaces';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { ModalData } from '../../interfaces/modal-data';
 import { Store } from '@ngrx/store';
+import { updateEmployees } from '../../actions';
 
 @Component({
   selector: 'app-employee-modal',
   templateUrl: './employee-modal.component.html',
   styleUrls: ['./employee-modal.component.scss']
 })
-export class EmployeeModalComponent  {
-
+export class EmployeeModalComponent {
   employee: Employee;
   disableButton = true;
   title = 'Employee Details';
+  nameEmployee: string;
+  ageEmployee: number;
+  salaryEmployee: number;
 
   constructor(
     public dialogRef: MatDialogRef<EmployeeModalComponent>,
@@ -23,16 +26,27 @@ export class EmployeeModalComponent  {
     private store: Store<any>
   ) {
     this.employee = this.data.employee;
+    this.nameEmployee = this.employee.employee_name;
+    this.ageEmployee = this.employee.employee_age;
+    this.salaryEmployee = this.employee.employee_salary;
   }
 
   /*private checkAcceptButton(formControl: AbstractControl) {
     return formControl.value === 0 || (!formControl.valid && !formControl.disabled) ? true : false;
   }*/
 
-  edit(){
+  edit() {
     this.disableButton = false;
   }
-  accept() {
+
+  accept(id: number) {
+    const data: EmployeeUpdate = {
+      id,
+      name: this.nameEmployee,
+      age: this.ageEmployee,
+      salary: this.salaryEmployee
+    };
+    this.store.dispatch(updateEmployees(data));
     /*const createApplication: CreateApplication = {
       idPersona: this.persona.idPersona,
       status: this.persona.status,
@@ -47,8 +61,7 @@ export class EmployeeModalComponent  {
   }
 
   cancel() {
-
-    this.disableButton ? this.dialogRef.close(false) : this.disableButton = true;
+    this.disableButton ? this.dialogRef.close(false) : (this.disableButton = true);
     /*const dialogRef = this.dialog.open(CancelComponent, { data: { persona: this.persona } });
 
     dialogRef.afterClosed().subscribe(cancel => {
