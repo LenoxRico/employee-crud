@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Employee, SeniorityTypes, SeniorityIcons } from '../../interfaces';
-import { Observable, of } from 'rxjs';
+import { Employee, SeniorityTypes } from '../../interfaces';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getEmployees } from '../../actions';
 import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { EmployeeModalComponent } from '../employee-modal';
+import { EmployeeService } from '../../services';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -14,15 +15,11 @@ export class UsersListComponent implements OnInit {
   employeeStorage$: Observable<Employee[]>;
   seniorityTypes = SeniorityTypes;
   title = 'Employee List';
-  displayedColumns: string[] = [
-    'icon',
-    'name',
-    'years'
-  ];
+  displayedColumns: string[] = ['icon', 'name', 'years'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private store: Store<any>) {
+  constructor(private dialog: MatDialog, private store: Store<any>, private employeeService: EmployeeService) {
     this.employeeStorage$ = this.store.select(state => state.employee.employees);
   }
 
@@ -32,17 +29,13 @@ export class UsersListComponent implements OnInit {
       employees.map(e => {
         this.dataSource = new MatTableDataSource(employees);
         this.dataSource.paginator = this.paginator;
-        if (e.employee_salary < 10000) {
-          e.icon = SeniorityIcons.JUNIOR;
-        } else if (e.employee_salary >= 10000 && e.employee_salary < 40000) {
-          e.icon = SeniorityIcons.ADVANCE;
-        } else if (e.employee_salary >= 40000 && e.employee_salary < 100000) {
-          e.icon = SeniorityIcons.SEMI_SENIOR;
-        } else {
-          e.icon = SeniorityIcons.SENIOR;
-        }
+        e.icon = this.employeeService.updateSeniority(e.employee_salary);
       });
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openDialog(employee: Employee): void {

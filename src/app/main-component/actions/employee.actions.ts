@@ -6,7 +6,7 @@ export const getEmployeesSuccess = createAction('[Employee] get all employees su
 export const getEmployeesError = createAction('[Employee] get all employees error');
 
 export const updateEmployees = createAction('[Employee] update employee', (payload: EmployeeUpdate) => ({payload}));
-export const updateEmployeesSuccess = createAction('[Employee] update employee success', (payload: EmployeeUpdate) => ({payload}));
+export const updateEmployeesSuccess = createAction('[Employee] update employee success', (payload: Employee) => ({payload}));
 export const updateEmployeesError = createAction('[Employee] update employee Error');
 
 const actions = union({

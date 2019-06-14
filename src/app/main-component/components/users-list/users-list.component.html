@@ -11,7 +11,10 @@
       <h2>{{ title }}</h2>
     </div>
     <mat-card-content class="employee-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
-      <div class='container-list__table' fxLayout="column" fxLayoutGap="25px">
+      <mat-form-field class="employee-container__filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder='Filter' />
+      </mat-form-field>
+      <div class="container-list__table" fxLayout="column" fxLayoutGap="25px">
         <table mat-table [dataSource]="dataSource">
           <!-- Position Column -->
           <ng-container matColumnDef="icon">

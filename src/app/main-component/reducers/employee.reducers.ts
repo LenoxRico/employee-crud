@@ -12,7 +12,8 @@ export function employeeReducer(state: EmployeeState = initialState, action: Emp
     case getEmployeesSuccess.type:
       return { ...state, employees: action.payload };
     case updateEmployeesSuccess.type:
-      return { ...state, updateSuccessful: action.payload };
+      const employees = [action.payload, ...state.employees.filter(e => e.id !== action.payload.id)];
+      return { ...state, updateSuccessful: action.payload, employees };
     default:
       return state;
   }

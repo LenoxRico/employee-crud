@@ -13,6 +13,7 @@ import { EmployeeService } from '../services';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, take } from 'rxjs/operators';
 import { CoreService } from '@src/app/shared/services';
+import { Employee } from '../interfaces';
 
 @Injectable()
 export class EmployeeEffect {
@@ -44,7 +45,14 @@ export class EmployeeEffect {
     }),
     map(employee => {
       this.coreServices.displaySpinner(false);
-      return { type: updateEmployeesSuccess.type, payload: employee };
+      const updatedEmployee:Employee={
+        id: employee.id,
+        employee_name: employee.name,
+        employee_salary: employee.salary,
+        employee_age: employee.age,
+        icon: this.employeeService.updateSeniority(employee.salary)
+      };
+      return { type: updateEmployeesSuccess.type, payload: updatedEmployee };
     }),
     catchError(() => {
       this.coreServices.displaySpinner(false);
