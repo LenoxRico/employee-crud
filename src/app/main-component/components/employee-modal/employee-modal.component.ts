@@ -29,6 +29,9 @@ export class EmployeeModalComponent  {
     return formControl.value === 0 || (!formControl.valid && !formControl.disabled) ? true : false;
   }*/
 
+  edit(){
+    this.disableButton = false;
+  }
   accept() {
     /*const createApplication: CreateApplication = {
       idPersona: this.persona.idPersona,
@@ -44,6 +47,8 @@ export class EmployeeModalComponent  {
   }
 
   cancel() {
+
+    this.disableButton ? this.dialogRef.close(false) : this.disableButton = true;
     /*const dialogRef = this.dialog.open(CancelComponent, { data: { persona: this.persona } });
 
     dialogRef.afterClosed().subscribe(cancel => {

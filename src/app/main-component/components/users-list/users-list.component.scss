@@ -1,4 +1,10 @@
-.header{
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
+.container-list{
+    min-width: 50%;
+    .header{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+    &__table{
+        width: 90%;
+    }
 }

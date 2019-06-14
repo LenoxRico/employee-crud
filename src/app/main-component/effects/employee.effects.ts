@@ -19,7 +19,7 @@ export class EmployeeEffect {
     }),
     map(employees => {
       this.coreServices.displaySpinner(false);
-      return { type: getEmployeesSuccess.type, payload: employees.filter((e,index) => e.employee_age > 0 && index<400) };
+      return { type: getEmployeesSuccess.type, payload: employees.filter((e, index) => e.employee_age > 0 && index < 400) };
     }),
     catchError(() => {
       this.coreServices.displaySpinner(false);

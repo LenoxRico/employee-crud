@@ -9,6 +9,7 @@ import { employeeReducer } from '../reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffect } from '../effects';
 import { EmployeeModalComponent } from '../components';
+import { MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   declarations: [UsersListComponent,EmployeeModalComponent],
@@ -17,6 +18,7 @@ import { EmployeeModalComponent } from '../components';
     CommonModule, 
     MainRoutingModule, 
     SharedModule,
+    MatPaginatorModule,
     StoreModule.forFeature('employee', employeeReducer),
     EffectsModule.forFeature([EmployeeEffect])
   ],

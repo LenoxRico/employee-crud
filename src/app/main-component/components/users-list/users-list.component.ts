@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Employee, SeniorityTypes, SeniorityIcons } from '../../interfaces';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getEmployees } from '../../actions';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { EmployeeModalComponent } from '../employee-modal';
 @Component({
   selector: 'app-users-list',
@@ -14,15 +14,24 @@ export class UsersListComponent implements OnInit {
   employeeStorage$: Observable<Employee[]>;
   seniorityTypes = SeniorityTypes;
   title = 'Employee List';
+  displayedColumns: string[] = [
+    'icon',
+    'name',
+    'years'
+  ];
+  dataSource: any;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private dialog: MatDialog, private store: Store<any>) {
-    this.employeeStorage$ = this.store.select(state=>state.employee.employees);
+    this.employeeStorage$ = this.store.select(state => state.employee.employees);
   }
 
   ngOnInit() {
     this.store.dispatch(getEmployees());
     this.employeeStorage$.subscribe(employees => {
       employees.map(e => {
+        this.dataSource = new MatTableDataSource(employees);
+        this.dataSource.paginator = this.paginator;
         if (e.employee_salary < 10000) {
           e.icon = SeniorityIcons.JUNIOR;
         } else if (e.employee_salary >= 10000 && e.employee_salary < 40000) {

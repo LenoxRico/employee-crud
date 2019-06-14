@@ -3,8 +3,8 @@
     flex-direction: column;
     &__options{
         background: rgba(#673ab7,.5);
-        padding: 10px 50px;
-        margin: 10px 0;
+        padding: 0 50px;
+        margin: 0;
         display: flex;
         justify-content: space-between;
         // font-family: $secondary-font;
@@ -12,6 +12,6 @@
     }
     img{
         align-self: center;
-        min-width: 200px;
+        min-width: 150px;
     }    
 }

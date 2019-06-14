@@ -1,5 +1,5 @@
 <h1 class="header" mat-dialog-title>{{ title }}</h1>
-<mat-dialog-content>
+<mat-dialog-content fxLayout="column" fxLayoutGap="25px">
   <div fxLayout.xs="column" fxLayout="row" fxLayoutGap="25px">
     <div fxFlex fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start center">
       <div>
@@ -17,15 +17,18 @@
       <div>
         <h3 class="bold">Salary:</h3>
         <span>{{ employee.employee_salary | currency }}</span
-        >-
+        >
+      </div>
+      <div>
+        <h3 class="bold">Seniority:</h3>
         <mat-icon>{{ employee.icon }}</mat-icon>
       </div>
     </div>
   </div>
   <div fxLayout.xs="column" fxLayout.sm="column" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-    <button mat-raised-button color="primary">Edit</button>
-    <button mat-raised-button color="warning" (click)="cancel()">Cancel</button>
-    <button mat-raised-button color="success" [disabled]="disableButton" (click)="accept()">
+    <button mat-raised-button color="primary"(click)="edit()">Edit</button>
+    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="accent" [disabled]="disableButton" (click)="accept()">
       Save
     </button>
   </div>
