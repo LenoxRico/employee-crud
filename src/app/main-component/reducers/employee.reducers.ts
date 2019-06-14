@@ -1,4 +1,4 @@
-import { getEmployeesSuccess, getEmployeesError, EmployeeActions, updateEmployeesSuccess } from '../actions';
+import { getEmployeesSuccess, EmployeeActions, updateEmployeesSuccess, deleteEmployeesSuccess } from '../actions';
 import { Employee } from '../interfaces';
 export interface EmployeeState {
   employees: Employee[];
@@ -14,6 +14,11 @@ export function employeeReducer(state: EmployeeState = initialState, action: Emp
     case updateEmployeesSuccess.type:
       const employees = [action.payload, ...state.employees.filter(e => e.id !== action.payload.id)];
       return { ...state, updateSuccessful: action.payload, employees };
+    case deleteEmployeesSuccess.type:
+        // return state.employees.filter(employee => {
+        //   return employee.id !== action.payload.id;
+        // });
+        return state;
     default:
       return state;
   }

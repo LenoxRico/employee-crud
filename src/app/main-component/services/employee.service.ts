@@ -15,7 +15,11 @@ export class EmployeeService {
     return this.http.put<EmployeeUpdate>(`http://dummy.restapiexample.com/api/v1/update/${employee.id}`, employee);
   }
 
-  updateSeniority(employee_salary:number) {
+  deleteEmployee(employee: Employee): Observable<Employee> {
+    return this.http.delete<Employee>(`http://dummy.restapiexample.com/api/v1/delete/${employee.id}`);
+  }
+
+  updateSeniority(employee_salary: number) {
     let icon = SeniorityIcons.SENIOR;
     if (employee_salary < 10000) {
       icon = SeniorityIcons.JUNIOR;
@@ -23,8 +27,7 @@ export class EmployeeService {
       icon = SeniorityIcons.ADVANCE;
     } else if (employee_salary >= 40000 && employee_salary < 100000) {
       icon = SeniorityIcons.SEMI_SENIOR;
-    } 
-
+    }
     return icon;
   }
 }

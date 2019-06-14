@@ -6,6 +6,15 @@
     }
     &__table{
         width: 90%;
+        table{
+            th{
+                color: #673ab7;
+                font-weight: bold;
+            }
+        }
+        &--icon{
+            color: #673ab7;
+        }
     }
 }
 .employee-container{

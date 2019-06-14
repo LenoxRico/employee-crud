@@ -7,7 +7,10 @@ import {
   getEmployeesSuccess,
   updateEmployees,
   updateEmployeesSuccess,
-  updateEmployeesError
+  updateEmployeesError,
+  deleteEmployees,
+  deleteEmployeesSuccess,
+  deleteEmployeesError
 } from '../actions/employee.actions';
 import { EmployeeService } from '../services';
 import { Observable, of } from 'rxjs';
@@ -45,7 +48,7 @@ export class EmployeeEffect {
     }),
     map(employee => {
       this.coreServices.displaySpinner(false);
-      const updatedEmployee:Employee={
+      const updatedEmployee: Employee = {
         id: employee.id,
         employee_name: employee.name,
         employee_salary: employee.salary,
@@ -57,6 +60,23 @@ export class EmployeeEffect {
     catchError(() => {
       this.coreServices.displaySpinner(false);
       return of({ type: updateEmployeesError.type });
+    })
+  );
+
+  @Effect()
+  deleteEmployees$: Observable<EmployeeActions> = this.actions.pipe(
+    ofType(deleteEmployees.type),
+    switchMap((action: any) => {
+      this.coreServices.displaySpinner(true);
+      return this.employeeService.deleteEmployee(action.payload);
+    }),
+    map(employee => {
+      this.coreServices.displaySpinner(false);
+      return { type: deleteEmployeesSuccess.type, payload: employee };
+    }),
+    catchError(() => {
+      this.coreServices.displaySpinner(false);
+      return of({ type: deleteEmployeesError.type });
     })
   );
 }

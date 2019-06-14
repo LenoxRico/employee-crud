@@ -6,6 +6,8 @@ import { getEmployees } from '../../actions';
 import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { EmployeeModalComponent } from '../employee-modal';
 import { EmployeeService } from '../../services';
+import { CancelComponent } from '../cancel';
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -15,7 +17,7 @@ export class UsersListComponent implements OnInit {
   employeeStorage$: Observable<Employee[]>;
   seniorityTypes = SeniorityTypes;
   title = 'Employee List';
-  displayedColumns: string[] = ['icon', 'name', 'years'];
+  displayedColumns: string[] = ['icon', 'name', 'years', 'delete'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -47,6 +49,16 @@ export class UsersListComponent implements OnInit {
           ...employee,
           profile_image: employee.profile_image ? employee.profile_image : defaultImage
         }
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {});
+  }
+
+  deleteEmployee(employee: Employee): void {
+    const dialogRef = this.dialog.open(CancelComponent, {
+      width: '500px',
+      data: {
+        employee: { employee }
       }
     });
     dialogRef.afterClosed().subscribe(result => {});

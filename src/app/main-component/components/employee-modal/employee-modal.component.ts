@@ -30,8 +30,8 @@ export class EmployeeModalComponent {
     this.store
       .select(state => state.employee.updateSuccessful)
       .subscribe((updateSuccessful: Employee) => {
-        if (updateSuccessful && updateSuccessful.id===this.employee.id) {
-          this.employee = {...updateSuccessful, profile_image: this.employee.profile_image}
+        if (updateSuccessful && updateSuccessful.id === this.employee.id) {
+          this.employee = { ...updateSuccessful, profile_image: this.employee.profile_image };
           this.disableButton = true;
         }
       });

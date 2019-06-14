@@ -1,0 +1,8 @@
+<div class="cancel-dialog" fxLayout="column" fxLayoutGap="25px">
+  <h3>Are you sure want to delete {{ employee.employee_name }}?</h3>
+  <p>This action can't be undone</p>
+  <div fxLayout="row" fxLayoutGap="25px">
+    <button mat-raised-button color="primary" (click)="accept()">Accept</button>
+    <button mat-raised-button color="warning" (click)="cancel()">Cancel</button>
+  </div>
+</div>

@@ -2,12 +2,16 @@ import { createAction, union } from '@ngrx/store';
 import { Employee, EmployeeUpdate } from '../interfaces';
 
 export const getEmployees = createAction('[Employee] get all employees');
-export const getEmployeesSuccess = createAction('[Employee] get all employees success', (payload: Employee[]) => ({payload}));
+export const getEmployeesSuccess = createAction('[Employee] get all employees success', (payload: Employee[]) => ({ payload }));
 export const getEmployeesError = createAction('[Employee] get all employees error');
 
-export const updateEmployees = createAction('[Employee] update employee', (payload: EmployeeUpdate) => ({payload}));
-export const updateEmployeesSuccess = createAction('[Employee] update employee success', (payload: Employee) => ({payload}));
+export const updateEmployees = createAction('[Employee] update employee', (payload: EmployeeUpdate) => ({ payload }));
+export const updateEmployeesSuccess = createAction('[Employee] update employee success', (payload: Employee) => ({ payload }));
 export const updateEmployeesError = createAction('[Employee] update employee Error');
+
+export const deleteEmployees = createAction('[Employee] delete employee', (payload: Employee) => ({ payload }));
+export const deleteEmployeesSuccess = createAction('[Employee] delete employee success', (payload: Employee) => ({ payload }));
+export const deleteEmployeesError = createAction('[Employee] delete employee Error');
 
 const actions = union({
   getEmployees,
@@ -15,7 +19,10 @@ const actions = union({
   getEmployeesError,
   updateEmployees,
   updateEmployeesSuccess,
-  updateEmployeesError
+  updateEmployeesError,
+  deleteEmployees,
+  deleteEmployeesSuccess,
+  deleteEmployeesError
 });
 
 export type EmployeeActions = typeof actions;
