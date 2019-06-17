@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Employee, EmployeeUpdate, SeniorityIcons } from '../interfaces';
+import { Employee, EmployeeUpdate, SeniorityIcons, SuccessDelete } from '../interfaces';
 
 @Injectable()
 export class EmployeeService {
@@ -15,8 +15,8 @@ export class EmployeeService {
     return this.http.put<EmployeeUpdate>(`http://dummy.restapiexample.com/api/v1/update/${employee.id}`, employee);
   }
 
-  deleteEmployee(employee: Employee): Observable<Employee> {
-    return this.http.delete<Employee>(`http://dummy.restapiexample.com/api/v1/delete/${employee.id}`);
+  deleteEmployee(employee: Employee): Observable<SuccessDelete> {
+    return this.http.delete<SuccessDelete>(`http://dummy.restapiexample.com/api/v1/delete/${employee.id}`);
   }
 
   updateSeniority(employee_salary: number) {

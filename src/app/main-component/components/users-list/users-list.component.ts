@@ -58,7 +58,7 @@ export class UsersListComponent implements OnInit {
     const dialogRef = this.dialog.open(CancelComponent, {
       width: '500px',
       data: {
-        employee: { employee }
+        employee
       }
     });
     dialogRef.afterClosed().subscribe(result => {});

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Employee } from '../../interfaces';
 import { ModalData } from '../../interfaces/modal-data';
 import { deleteEmployees } from '../../actions';
+import { EmployeeState } from '../../reducers';
 
 @Component({
   selector: 'app-cancel',
@@ -20,8 +21,12 @@ export class CancelComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: ModalData,
     private store: Store<any>
   ) {
-    this.employeeStorage$ = store.select('employee');
     this.employee = this.data.employee;
+    this.store.select('employee').subscribe((state: EmployeeState) => {
+      if (state.deleteSuccessful && state.deleteSuccessful.id === this.employee.id) {
+        this.cancel();
+      }
+    });
   }
 
   ngOnInit() {}

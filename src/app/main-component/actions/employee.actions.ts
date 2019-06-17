@@ -1,5 +1,5 @@
 import { createAction, union } from '@ngrx/store';
-import { Employee, EmployeeUpdate } from '../interfaces';
+import { Employee, EmployeeUpdate, SuccessDelete } from '../interfaces';
 
 export const getEmployees = createAction('[Employee] get all employees');
 export const getEmployeesSuccess = createAction('[Employee] get all employees success', (payload: Employee[]) => ({ payload }));
@@ -10,7 +10,7 @@ export const updateEmployeesSuccess = createAction('[Employee] update employee s
 export const updateEmployeesError = createAction('[Employee] update employee Error');
 
 export const deleteEmployees = createAction('[Employee] delete employee', (payload: Employee) => ({ payload }));
-export const deleteEmployeesSuccess = createAction('[Employee] delete employee success', (payload: Employee) => ({ payload }));
+export const deleteEmployeesSuccess = createAction('[Employee] delete employee success', (payload: any) => ({ payload }));
 export const deleteEmployeesError = createAction('[Employee] delete employee Error');
 
 const actions = union({
