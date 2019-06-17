@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions, ofType } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { CoreService } from '@src/app/shared/services';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import {
+  deleteEmployees,
+  deleteEmployeesError,
+  deleteEmployeesSuccess,
   EmployeeActions,
   getEmployees,
   getEmployeesError,
   getEmployeesSuccess,
   updateEmployees,
-  updateEmployeesSuccess,
   updateEmployeesError,
-  deleteEmployees,
-  deleteEmployeesSuccess,
-  deleteEmployeesError
+  updateEmployeesSuccess
 } from '../actions/employee.actions';
+import { Employee } from '../interfaces';
 import { EmployeeService } from '../services';
-import { Observable, of } from 'rxjs';
-import { switchMap, map, catchError, take, withLatestFrom } from 'rxjs/operators';
-import { CoreService } from '@src/app/shared/services';
-import { Employee, SuccessDelete } from '../interfaces';
 
 @Injectable()
 export class EmployeeEffect {
@@ -69,7 +69,7 @@ export class EmployeeEffect {
     switchMap((action: any) => {
       this.coreServices.displaySpinner(true);
       return this.employeeService.deleteEmployee(action.payload).pipe(
-        map((response) => {
+        map(response => {
           this.coreServices.displaySpinner(false);
           return { type: deleteEmployeesSuccess.type, payload: { employee: action.payload, success: response } };
         })
