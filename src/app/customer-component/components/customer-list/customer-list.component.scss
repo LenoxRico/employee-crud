@@ -1,0 +1,19 @@
+.container-list{
+    min-width: 50%;
+    .header{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+    &__table{
+        width: 90%;
+        table{
+            th{
+                color: #673ab7;
+                font-weight: bold;
+            }
+        }
+        &--icon{
+            color: #673ab7;
+        }
+    }
+}

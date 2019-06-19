@@ -11,7 +11,7 @@ export class NavBarComponent implements OnInit {
   login: string;
 
   constructor(private authService: AuthService) {
-    this.login = 'face';
+    this.login = 'account_circle';
   }
 
   ngOnInit() {}

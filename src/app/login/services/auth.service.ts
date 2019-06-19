@@ -36,21 +36,24 @@ export class AuthService {
     this._router.navigate(['/customer']);
   }
 
-  getResource(resourceUrl): Observable<any> {
+  /*getResource(resourceUrl): Observable<any> {
     const headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
       Authorization: 'Bearer ' + Cookie.get('access_token')
     });
     const options = { headers };
     return this._http.get(resourceUrl, options).pipe(catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
-  }
+  }*/
 
   checkCredentials() {
-    if (!Cookie.check('access_token')) {
+    /*if (!Cookie.check('access_token')) {
       this._router.navigate(['/login']);
+      return false;
     } else {
-      this._router.navigate(['/home']);
-    }
+      return true;
+    }*/
+   // this._router.navigate(['/customer']);
+      return true;
   }
 
   logout() {

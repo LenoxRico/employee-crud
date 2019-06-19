@@ -9,7 +9,6 @@ import { employeeReducer } from '../reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffect } from '../effects';
 import { EmployeeModalComponent, CancelComponent } from '../components';
-import { MatPaginatorModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     MainRoutingModule,
     SharedModule,
-    MatPaginatorModule,
     FormsModule,
     StoreModule.forFeature('employee', employeeReducer),
     EffectsModule.forFeature([EmployeeEffect])

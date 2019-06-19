@@ -14,7 +14,8 @@ import {
   MatInputModule,
   MatSnackBarModule,
   MatButtonToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 
@@ -34,7 +35,8 @@ const modules =[
   MatInputModule,
   MatSnackBarModule,
   MatButtonToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatPaginatorModule
 ]
 @NgModule({
   imports: modules,

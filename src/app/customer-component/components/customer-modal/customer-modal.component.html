@@ -1,0 +1,22 @@
+<h1 class="header" mat-dialog-title>{{ title }}</h1>
+<mat-dialog-content fxLayout="column" fxLayoutGap="25px">
+  <div class="customer-detail" fxLayout.xs="column" fxLayout="row" fxLayoutGap="25px">
+    <div fxFlex fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start center">
+      <div fxLayout="column">
+        <h3 class="bold" >{{ customer.firstName }} {{customer.lastName}}</h3>
+      </div>
+      <div>
+        <img class="avatar" [src]="customer.profile_image" [alt]="customer.firstName" />
+      </div>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutGap="15px">
+      <div>
+        <h3 class="bold">Zip Code:</h3>
+        <span >{{ customer.zipCode}}</span>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+  </div>
+</mat-dialog-content>
