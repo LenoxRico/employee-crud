@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@src/app/login/services';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   src = 'assets/logo.gif';
+  login: string;
 
-  constructor() {}
+  constructor(private authService: AuthService) {
+    this.login = 'face';
+  }
 
   ngOnInit() {}
+
+  checkLogin() {
+    //settings_power
+    this.authService.checkCredentials();
+  }
 }

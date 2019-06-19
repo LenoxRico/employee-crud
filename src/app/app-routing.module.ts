@@ -5,8 +5,16 @@ import { NoAuthComponent, NotFoundComponent } from './alternative/components';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
+    path: 'login',
+    loadChildren: './login/modules/login.module#LoginModule'
+  },
+  {
     path: 'home',
     loadChildren: './main-component/modules/main.module#MainModule'
+  },
+  {
+    path: 'customer',
+    loadChildren: './customer-component/modules/customer.module#CustomerModule'
   },
   {
     path: 'no-auth',

@@ -1,5 +1,5 @@
 import { createAction, union } from '@ngrx/store';
-import { Employee, EmployeeUpdate, SuccessDelete } from '../interfaces';
+import { Employee, EmployeeUpdate } from '../interfaces';
 
 export const getEmployees = createAction('[Employee] get all employees');
 export const getEmployeesSuccess = createAction('[Employee] get all employees success', (payload: Employee[]) => ({ payload }));

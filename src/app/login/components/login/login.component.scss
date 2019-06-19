@@ -1,0 +1,10 @@
+.container-login{
+    min-width: 50%;
+    .header{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+    &__filter{
+        width: 90%;
+    }
+}

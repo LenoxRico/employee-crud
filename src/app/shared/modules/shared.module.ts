@@ -10,6 +10,7 @@ import { SpinnerComponent, InputErrorMessagesComponent, NavBarComponent } from '
 
 import { ValidationService, ObservableService } from '../services';
 import { AngularMaterialsModule } from './angular-materials/angular-materials.module';
+import { AuthService } from '@src/app/login/services';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,6 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     AngularMaterialsModule
   ],
-  providers: [ValidationService, ObservableService]
+  providers: [ValidationService, ObservableService, AuthService]
 })
 export class SharedModule {}
