@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Cookie } from 'ng2-cookies';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -11,23 +9,23 @@ export class AuthService {
   private authApi: string;
 
   constructor(private _router: Router, private _http: HttpClient) {
-    this.clientId = '';
-    this.authApi = 'http://localhost:8081/spring-security-oauth-server/oauth/token';
+    this.clientId = 'clientSecret';
+    this.authApi = 'http://192.168.207.46:8281/oauth/token?grant_type=client_credentials';
   }
 
   obtainAccessToken(loginData) {
-    const params = new URLSearchParams();
+   /* const params = new URLSearchParams();
     params.append('username', loginData.username);
     params.append('password', loginData.password);
-    params.append('grant_type', 'password');
-    params.append('client_id', this.clientId);
+    params.append('grant_type', '');*/
+    //params.append('client_id', this.clientId);
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Basic ' + btoa(`${this.clientId}:secret`)
+      'Content-type': 'application/x-www-form-urlencoded',
+      'Authorization': `Basic ${btoa(`${loginData.username}:${loginData.password}`)}`
     });
     const options = { headers };
 
-    this._http.post(this.authApi, params.toString(), options).subscribe(data => this.saveToken(data), err => alert('Invalid Credentials'));
+    this._http.post(this.authApi, {grant_type:'client_credentials'}, options).subscribe(data => this.saveToken(data), err => alert('Invalid Credentials'));
   }
 
   saveToken(token) {
@@ -46,14 +44,13 @@ export class AuthService {
   }*/
 
   checkCredentials() {
-    /*if (!Cookie.check('access_token')) {
+    if (!Cookie.check('access_token')) {
       this._router.navigate(['/login']);
       return false;
     } else {
       return true;
-    }*/
+    }
    // this._router.navigate(['/customer']);
-      return true;
   }
 
   logout() {
