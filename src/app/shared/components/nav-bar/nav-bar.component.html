@@ -1,11 +1,9 @@
 <div class="navbar">
   <img [src]="src" alt="logo" width="100" />
   <div class="navbar__options">
-    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" >Employees</button>
-   
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active">Employees</button>
 
-    <button mat-button [routerLink]="['/customer']" >Customers</button>
-    
+    <button mat-button [routerLink]="['/customer']">Customers</button>
 
     <button mat-button (click)="checkLogin()">
       <mat-icon>{{ login }}</mat-icon>

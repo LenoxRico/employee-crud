@@ -3,38 +3,19 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { CoreService } from '@src/app/shared/services';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import {
-    getCustomers,
-    getCustomersSuccess,
-    getCustomersError,
-    CustomerActions
-} from '../actions';
-import { Customer } from '../../interfaces';
+import { CustomerService } from '../../services';
+import { CustomerActions, getCustomers, getCustomersError, getCustomersSuccess } from '../actions';
 
 @Injectable()
 export class CustomerEffect {
-  constructor(private actions: Actions, private coreServices: CoreService) {}
+  constructor(private actions: Actions, private coreServices: CoreService, private customerService: CustomerService) {}
 
   @Effect()
   getCustomers$: Observable<CustomerActions> = this.actions.pipe(
     ofType(getCustomers.type),
     switchMap(action => {
       this.coreServices.displaySpinner(true);
-      return of([
-        {
-            "id": 1,
-            "firstName": "pedre",
-            "lastName": "paramo",
-            "zipCode": "123dss"
-        },
-        {
-            "id": 2,
-            "firstName": "Daniel",
-            "lastName": "Puerta",
-            "zipCode": "152df"
-        }
-      ])
-    //   return this.employeeService.getEmployees();
+      return this.customerService.getCustomers();
     }),
     map(customers => {
       this.coreServices.displaySpinner(false);

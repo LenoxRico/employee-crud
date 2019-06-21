@@ -8,6 +8,7 @@ import { CustomerEffect, customerReducer } from '../store';
 import { SharedModule } from '@src/app/shared/modules';
 import { LoginModule } from '@src/app/login/modules';
 import { CustomerModalComponent } from '../components/customer-modal';
+import { CustomerService } from '../services';
 
 @NgModule({
   declarations: [CustomerListComponent, CustomerModalComponent],
@@ -19,6 +20,7 @@ import { CustomerModalComponent } from '../components/customer-modal';
     LoginModule,
     StoreModule.forFeature('customer', customerReducer),
     EffectsModule.forFeature([CustomerEffect])
-  ]
+  ],
+  providers: [CustomerService]
 })
-export class CustomerModule { }
+export class CustomerModule {}
