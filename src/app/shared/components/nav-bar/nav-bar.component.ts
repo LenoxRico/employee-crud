@@ -22,6 +22,9 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.login = this.authService.getLoginStatus().pipe(tap(item => console.log(item)));
+    if (Cookie.check('language')) {
+      this.selectedLanguage = Languages.find(lang => lang.code === Cookie.get('language'));
+    } 
   }
 
   checkLogin() {
