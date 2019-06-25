@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { NoAuthComponent, NotFoundComponent } from './alternative/components';
 import { HttpLoaderFactory, SharedModule } from './shared/modules';
 import { TokenInterceptor, CoreService } from './shared/services';
+import { AuthService } from './login/services';
+import { AuthGuard } from './login/guards';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, NoAuthComponent],
@@ -42,6 +44,8 @@ import { TokenInterceptor, CoreService } from './shared/services';
       useClass: TokenInterceptor,
       multi: true
     },
+    AuthService,
+    AuthGuard,
     CoreService
   ],
   bootstrap: [AppComponent]

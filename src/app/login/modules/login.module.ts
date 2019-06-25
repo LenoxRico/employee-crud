@@ -15,7 +15,6 @@ import { AuthGuard } from '@src/app/login/guards';
     LoginRoutingModule,
     SharedModule,
     FormsModule
-  ],
-  providers: [AuthService, AuthGuard]
+  ]
 })
 export class LoginModule {}

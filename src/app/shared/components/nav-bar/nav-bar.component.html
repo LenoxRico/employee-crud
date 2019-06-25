@@ -6,7 +6,7 @@
     <button mat-button [routerLink]="['/customer']">Customers</button>
 
     <button mat-button (click)="checkLogin()">
-      <mat-icon>{{ login }}</mat-icon>
+      <mat-icon>{{ login | async}}</mat-icon>
     </button>
   </div>
 </div>
