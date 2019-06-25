@@ -1,0 +1,58 @@
+{
+    "alternative":{
+        "not-found":{
+            "text": "The page was not found.",
+            "button": "Go Back"
+        }
+    },
+    "customer-component":{
+        "customer-list":{
+            "title": "Customer List",
+            "table-header-name":"Name",
+            "table-header-lastname":"Lastname"
+        },
+        "customer-modal":{
+            "title": "Customer Detail",
+            "zip":"Zip Code",
+            "button-cancel":"Close"
+        }
+    },
+    "login":{
+        "title": "Login",
+        "user": "User",
+        "password":"Password",
+        "button-login":"Login"
+    },
+    "main-component":{
+        "cancel":{
+            "title":"Are you sure want to delete the employee {{ employee }}?",
+            "content":"This action can´t be undone",
+            "button-cancel":"Cancel",
+            "button-accept":"Accept"
+        },
+        "employee-modal":{
+            "title":"Employee Detail",
+            "name":"Name",
+            "age":"Age",
+            "age-prefix":"{{ age }} years old",
+            "salary":"Salary",
+            "seniority":"Seniority",
+            "button-edit":"Edit",
+            "button-cancel":"Cancel",
+            "button-accept":"Accept"
+        },
+        "user-list":{
+            "title":"Employee List",
+            "filter":"Filter",
+            "name":"Name",
+            "age":"Age",
+            "age-prefix":"{{ age }} years old"
+        }
+    },
+    "shared":{
+        "nav-bar":{
+            "employees":"Employees",
+            "customers":"Customers"
+        }
+    }
+}

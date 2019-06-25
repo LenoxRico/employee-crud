@@ -1,0 +1,58 @@
+{
+    "alternative":{
+        "not-found":{
+            "text": "La page que vous recherchez n'a pas été trouvée.",
+            "button": "Retour"
+        }
+    },
+    "customer-component":{
+        "customer-list":{
+            "title": "Liste de Clients",
+            "table-header-name":"nom",
+            "table-header-lastname":"Nom"
+        },
+        "customer-modal":{
+            "title": "Customer Detail",
+            "zip":"Code Postal",
+            "button-cancel":"Fermer"
+        }
+    },
+    "login":{
+        "title": "Login",
+        "user": "Utilisateur",
+        "password":"Mot de passe",
+        "button-login":"Login"
+    },
+    "main-component":{
+        "cancel":{
+            "title":"Êtes-vous sûr de vouloir supprimer l'employé {{employee}}?",
+            "content":"Cette action ne peut pas être annulée",
+            "button-cancel":"Annuler",
+            "button-accept":"OK"
+        },
+        "employee-modal":{
+            "title":"Détail de l'employé",
+            "name":"nom",
+            "age":"Age",
+            "age-prefix":"{{age}} Années",
+            "salary":"Aalaire",
+            "seniority":"Ancienneté",
+            "button-edit":"Éditer",
+            "button-cancel":"Annuler",
+            "button-accept":"OK"
+        },
+        "user-list":{
+            "title":"Liste des Employés",
+            "filter":"Recherche",
+            "name":"nom",
+            "age":"Age",
+            "age-prefix":"{{age}} Années"
+        }
+    },
+    "shared":{
+        "nav-bar":{
+            "employees":"Employés",
+            "customers":"Clients"
+        }
+    }
+}

@@ -8,11 +8,11 @@
   <div></div>
   <mat-card class="container-list mat-elevation-z8">
     <div class="header">
-      <h2>{{ title }}</h2>
+      <h2>{{ 'main-component.user-list.title' | translate }}</h2>
     </div>
     <mat-card-content class="employee-container" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
       <mat-form-field class="employee-container__filter">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'main-component.user-list.filter' | translate }}" />
       </mat-form-field>
       <div class="container-list__table" fxLayout="column" fxLayoutGap="25px">
         <table mat-table [dataSource]="dataSource">
@@ -26,7 +26,7 @@
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th mat-header-cell *matHeaderCellDef>{{ 'main-component.user-list.name' | translate }}</th>
             <td mat-cell *matCellDef="let employee">
               <button mat-button (click)="openDialog(employee)">
                 <span>{{ employee.employee_name }}</span>
@@ -36,10 +36,10 @@
 
           <!-- Years Column -->
           <ng-container matColumnDef="years">
-            <th mat-header-cell *matHeaderCellDef>Years</th>
+            <th mat-header-cell *matHeaderCellDef>{{ 'main-component.user-list.age' | translate }}</th>
             <td mat-cell *matCellDef="let employee">
               <button mat-button (click)="openDialog(employee)">
-                <span>{{ employee.employee_age }} years old</span>
+                <span>{{ 'main-component.user-list.age-prefix' | translate:{ age:employee.employee_age } }}</span>
               </button>
             </td>
           </ng-container>
@@ -58,7 +58,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
       </div>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [hidePageSize]="false"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [hidePageSize]="true"></mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>

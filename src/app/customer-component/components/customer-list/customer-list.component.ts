@@ -13,7 +13,6 @@ import { CustomerModalComponent } from '../customer-modal';
 })
 export class CustomerListComponent implements OnInit {
   customerStorage$: Observable<Customer[]>;
-  title = 'Customer List';
   displayedColumns: string[] = ['icon', 'name', 'lastname'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;

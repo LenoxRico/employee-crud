@@ -1,0 +1,58 @@
+{
+    "alternative":{
+        "not-found":{
+            "text": "La página que busca no ha sido encontrada.",
+            "button": "Volver"
+        }
+    },
+    "customer-component":{
+        "customer-list":{
+            "title": "Lista de Clientes",
+            "table-header-name":"Nombre",
+            "table-header-lastname":"Apellido"
+        },
+        "customer-modal":{
+            "title": "Detalle del Cliente",
+            "zip":"Código Postal",
+            "button-cancel":"Cerrar"
+        }
+    },
+    "login":{
+        "title": "Iniciar Sesión",
+        "user": "Usuario",
+        "password":"Contraseña",
+        "button-login":"Iniciar Sesión"
+    },
+    "main-component":{
+        "cancel":{
+            "title":"¿Esta seguro que desea eliminar al empleado {{ employee }}?",
+            "content":"Esta acción no se puede deshacer",
+            "button-cancel":"Cancelar",
+            "button-accept":"Aceptar"
+        },
+        "employee-modal":{
+            "title":"Detalle del Empleado",
+            "name":"Nombre",
+            "age":"Edad",
+            "age-prefix":"{{ age }} Años",
+            "salary":"Salario",
+            "seniority":"Seniority",
+            "button-edit":"Editar",
+            "button-cancel":"Cancelar",
+            "button-accept":"Aceptar"
+        },
+        "user-list":{
+            "title":"Lista de Empleados",
+            "filter":"Buscar",
+            "name":"Nombre",
+            "age":"Edad",
+            "age-prefix":"{{ age }} Años"
+        }
+    },
+    "shared":{
+        "nav-bar":{
+            "employees":"Empleados",
+            "customers":"Clientes"
+        }
+    }
+}

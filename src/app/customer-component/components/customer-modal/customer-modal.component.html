@@ -1,4 +1,4 @@
-<h1 class="header" mat-dialog-title>{{ title }}</h1>
+<h1 class="header" mat-dialog-title>{{ 'customer-component.customer-modal.title' | translate }}</h1>
 <mat-dialog-content fxLayout="column" fxLayoutGap="25px">
   <div class="customer-detail" fxLayout.xs="column" fxLayout="row" fxLayoutGap="25px">
     <div fxFlex fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start center">
@@ -11,12 +11,12 @@
     </div>
     <div fxFlex fxLayout="column" fxLayoutGap="15px">
       <div>
-        <h3 class="bold">Zip Code:</h3>
+        <h3 class="bold">{{ 'customer-component.customer-modal.zip' | translate }}:</h3>
         <span >{{ customer.zipCode}}</span>
       </div>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="cancel()">{{ 'customer-component.customer-modal.button-cancel' | translate }}</button>
   </div>
 </mat-dialog-content>

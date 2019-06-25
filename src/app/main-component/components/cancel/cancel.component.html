@@ -1,8 +1,8 @@
 <div class="cancel-dialog" fxLayout="column" fxLayoutGap="25px">
-  <h3>Are you sure want to delete {{ employee.employee_name }}?</h3>
-  <p>This action can't be undone</p>
+  <h3>{{ 'main-component.cancel.title' | translate: { employee: employee.employee_name } }}</h3>
+  <p>{{ 'main-component.cancel.content' | translate }}</p>
   <div fxLayout="row" fxLayoutGap="25px">
-    <button mat-raised-button color="primary" (click)="accept()">Accept</button>
-    <button mat-raised-button color="warning" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="accept()">{{ 'main-component.cancel.button-accept' | translate }}</button>
+    <button mat-raised-button color="warning" (click)="cancel()">{{ 'main-component.cancel.button-cancel' | translate }}</button>
   </div>
 </div>

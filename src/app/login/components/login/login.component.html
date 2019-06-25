@@ -2,16 +2,16 @@
   <div></div>
   <mat-card class="container-login mat-elevation-z8">
     <div class="header">
-      <h2>Login</h2>
+      <h2>{{ 'login.title' | translate }}</h2>
     </div>
     <mat-card-content fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
       <mat-form-field class="container-login__filter">
-        <input matInput placeholder="User" type="text" required [(ngModel)]="loginData.username" />
+        <input matInput placeholder="{{ 'login.user' | translate }}" type="text" required [(ngModel)]="loginData.username" />
       </mat-form-field>
       <mat-form-field class="container-login__filter">
-        <input matInput placeholder="Password" type="password" required [(ngModel)]="loginData.password" />
+        <input matInput placeholder="{{ 'login.password' | translate }}" type="password" required [(ngModel)]="loginData.password" />
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="login()" type="submit">Login</button>
+      <button mat-raised-button color="primary" (click)="login()" type="submit">{{ 'login.button-login' | translate }}</button>
     </mat-card-content>
   </mat-card>
 </div>

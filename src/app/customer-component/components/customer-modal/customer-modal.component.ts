@@ -10,7 +10,6 @@ import { Store } from '@ngrx/store';
 })
 export class CustomerModalComponent {
   customer: Customer;
-  title = 'Customer Details';
 
   constructor(
     public dialogRef: MatDialogRef<CustomerModalComponent>,
@@ -20,8 +19,7 @@ export class CustomerModalComponent {
     this.customer = this.data.customer;
   }
 
-
   cancel() {
-     this.dialogRef.close(false);
+    this.dialogRef.close(false);
   }
 }

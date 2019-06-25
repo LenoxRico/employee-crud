@@ -1,12 +1,20 @@
 <div class="navbar">
   <img [src]="src" alt="logo" width="100" />
   <div class="navbar__options">
-    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active">Employees</button>
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active">{{ 'shared.nav-bar.employees' | translate }}</button>
 
-    <button mat-button [routerLink]="['/customer']">Customers</button>
+    <button mat-button [routerLink]="['/customer']">{{ 'shared.nav-bar.customers' | translate }}</button>
 
     <button mat-button (click)="checkLogin()">
-      <mat-icon>{{ login | async}}</mat-icon>
+      <mat-icon>{{ login | async }}</mat-icon>
     </button>
+
+    <mat-form-field class="language-selection">
+      <mat-select [(value)]="selectedLanguage.code" (selectionChange)="useLanguage($event.value)">
+        <mat-option *ngFor="let language of languages" [value]="language.code">
+          {{ language.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>

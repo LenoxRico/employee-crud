@@ -16,7 +16,6 @@ import { CancelComponent } from '../cancel';
 export class UsersListComponent implements OnInit {
   employeeStorage$: Observable<Employee[]>;
   seniorityTypes = SeniorityTypes;
-  title = 'Employee List';
   displayedColumns: string[] = ['icon', 'name', 'years', 'delete'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;

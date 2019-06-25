@@ -13,7 +13,6 @@ import { ModalData } from '../../interfaces/modal-data';
 export class EmployeeModalComponent {
   employee: Employee;
   disableButton = true;
-  title = 'Employee Details';
   nameEmployee: string;
   ageEmployee: number;
   salaryEmployee: number;
