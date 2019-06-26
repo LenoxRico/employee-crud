@@ -53,6 +53,14 @@
         "nav-bar":{
             "employees":"Employees",
             "customers":"Customers"
+        },
+        "notification":{
+            "success-delete":"The user was deleted 😀",
+            "error-delete":"Oops, an error occurred when you try to delete 💩",
+            "success-edit":"The user was updated 😀",
+            "error-edit":"Oops, an error occurred when you try to update 💩",
+            "success-login":"Welcome! 😃🎉🎉",
+            "error-login":"Sorry, Invalid credentials! 💩"
         }
     }
 }

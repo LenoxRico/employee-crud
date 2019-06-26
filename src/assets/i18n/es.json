@@ -53,6 +53,14 @@
         "nav-bar":{
             "employees":"Empleados",
             "customers":"Clientes"
+        },
+        "notification":{
+            "success-delete":"El usuario fue eliminado 😀",
+            "error-delete":"Oops, un error ocurrio cuando intentó eliminar 💩",
+            "success-edit":"El usuario fue editado 😀",
+            "error-edit":"Oops, un error ocurrio cuando intentó actualizar 💩",
+            "success-login":"¡Bienvenido! 😃🎉🎉",
+            "error-login":"Lo sentimos, las credenciales son invalidas! 💩"
         }
     }
 }

@@ -13,6 +13,8 @@ export const deleteEmployees = createAction('[Employee] delete employee', (paylo
 export const deleteEmployeesSuccess = createAction('[Employee] delete employee success', (payload: any) => ({ payload }));
 export const deleteEmployeesError = createAction('[Employee] delete employee Error');
 
+export const cleanEmployeeState = createAction('[Employee] clean states');
+
 const actions = union({
   getEmployees,
   getEmployeesSuccess,
@@ -22,7 +24,8 @@ const actions = union({
   updateEmployeesError,
   deleteEmployees,
   deleteEmployeesSuccess,
-  deleteEmployeesError
+  deleteEmployeesError,
+  cleanEmployeeState
 });
 
 export type EmployeeActions = typeof actions;

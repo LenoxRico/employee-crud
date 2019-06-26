@@ -1,16 +1,19 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { updateEmployees } from '../../actions';
+import { updateEmployees, cleanEmployeeState } from '../../actions';
 import { Employee, EmployeeUpdate } from '../../interfaces';
 import { ModalData } from '../../interfaces/modal-data';
+import { TranslateService } from '@ngx-translate/core';
+import { NotificationService } from '@src/app/shared/services';
+import { EmployeeState } from '../../reducers';
 
 @Component({
   selector: 'app-employee-modal',
   templateUrl: './employee-modal.component.html',
   styleUrls: ['./employee-modal.component.scss']
 })
-export class EmployeeModalComponent {
+export class EmployeeModalComponent implements OnDestroy {
   employee: Employee;
   disableButton = true;
   nameEmployee: string;
@@ -20,20 +23,28 @@ export class EmployeeModalComponent {
   constructor(
     public dialogRef: MatDialogRef<EmployeeModalComponent>,
     @Inject(MAT_DIALOG_DATA) private data: ModalData,
-    private store: Store<any>
+    private store: Store<any>,
+    private translate: TranslateService,
+    private notificationService: NotificationService
   ) {
     this.employee = this.data.employee;
     this.nameEmployee = this.employee.employee_name;
     this.ageEmployee = this.employee.employee_age;
     this.salaryEmployee = this.employee.employee_salary;
-    this.store
-      .select(state => state.employee.updateSuccessful)
-      .subscribe((updateSuccessful: Employee) => {
-        if (updateSuccessful && updateSuccessful.id === this.employee.id) {
-          this.employee = { ...updateSuccessful, profile_image: this.employee.profile_image };
-          this.disableButton = true;
-        }
-      });
+    this.store.select('employee').subscribe((state: EmployeeState) => {
+      const { updateSuccessful, updateError } = state;
+      if (updateSuccessful) {
+        this.employee = { ...updateSuccessful, profile_image: this.employee.profile_image };
+        this.disableButton = true;
+        this.translate.get('shared.notification.success-edit').subscribe(text => {
+          this.notificationService.showNotification(text, true);
+        });
+      } else if (updateError) {
+        this.translate.get('shared.notification.error-edit').subscribe(text => {
+          this.notificationService.showNotification(text, false);
+        });
+      }
+    });
   }
 
   edit() {
@@ -52,5 +63,9 @@ export class EmployeeModalComponent {
 
   cancel() {
     this.disableButton ? this.dialogRef.close(false) : (this.disableButton = true);
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(cleanEmployeeState());
   }
 }

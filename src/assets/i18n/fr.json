@@ -53,6 +53,14 @@
         "nav-bar":{
             "employees":"Employés",
             "customers":"Clients"
+        },
+        "notification":{
+            "success-delete":"L'utilisateur a été supprimé 😀",
+            "error-delete":"Oups, une erreur s'est produite lors de la tentative de suppression de 💩",
+            "success-edit":"L'utilisateur a été mis à jour 😀",
+            "error-edit":"Oups, une erreur s'est produite lors de la mise à jour de 💩",
+            "success-login":"Bienvenue! 😃🎉🎉",
+            "error-login":"Désolé, informations d'identification non valides! 💩"
         }
     }
 }

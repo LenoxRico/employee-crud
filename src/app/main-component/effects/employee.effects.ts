@@ -27,15 +27,16 @@ export class EmployeeEffect {
     ofType(getEmployees.type),
     switchMap(action => {
       this.coreServices.displaySpinner(true);
-      return this.employeeService.getEmployees();
-    }),
-    map(employees => {
-      this.coreServices.displaySpinner(false);
-      return { type: getEmployeesSuccess.type, payload: employees.filter((e, index) => e.employee_age > 0 && index < 400) };
-    }),
-    catchError(() => {
-      this.coreServices.displaySpinner(false);
-      return of({ type: getEmployeesError.type });
+      return this.employeeService.getEmployees().pipe(
+        map(employees => {
+          this.coreServices.displaySpinner(false);
+          return { type: getEmployeesSuccess.type, payload: employees.filter((e, index) => e.employee_age > 0 && index < 400) };
+        }),
+        catchError(() => {
+          this.coreServices.displaySpinner(false);
+          return of({ type: getEmployeesError.type });
+        })
+      );
     })
   );
 
@@ -44,22 +45,23 @@ export class EmployeeEffect {
     ofType(updateEmployees.type),
     switchMap((action: any) => {
       this.coreServices.displaySpinner(true);
-      return this.employeeService.updateEmployee(action.payload);
-    }),
-    map(employee => {
-      this.coreServices.displaySpinner(false);
-      const updatedEmployee: Employee = {
-        id: employee.id,
-        employee_name: employee.name,
-        employee_salary: employee.salary,
-        employee_age: employee.age,
-        icon: this.employeeService.updateSeniority(employee.salary)
-      };
-      return { type: updateEmployeesSuccess.type, payload: updatedEmployee };
-    }),
-    catchError(() => {
-      this.coreServices.displaySpinner(false);
-      return of({ type: updateEmployeesError.type });
+      return this.employeeService.updateEmployee(action.payload).pipe(
+        map(employee => {
+          this.coreServices.displaySpinner(false);
+          const updatedEmployee: Employee = {
+            id: employee.id,
+            employee_name: employee.name,
+            employee_salary: employee.salary,
+            employee_age: employee.age,
+            icon: this.employeeService.updateSeniority(employee.salary)
+          };
+          return { type: updateEmployeesSuccess.type, payload: updatedEmployee };
+        }),
+        catchError(() => {
+          this.coreServices.displaySpinner(false);
+          return of({ type: updateEmployeesError.type });
+        })
+      );
     })
   );
 
@@ -72,12 +74,12 @@ export class EmployeeEffect {
         map(response => {
           this.coreServices.displaySpinner(false);
           return { type: deleteEmployeesSuccess.type, payload: { employee: action.payload, success: response } };
+        }),
+        catchError(() => {
+          this.coreServices.displaySpinner(false);
+          return of({ type: deleteEmployeesError.type });
         })
       );
-    }),
-    catchError(() => {
-      this.coreServices.displaySpinner(false);
-      return of({ type: deleteEmployeesError.type });
     })
   );
 }

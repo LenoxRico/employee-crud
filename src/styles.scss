@@ -1,14 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
 
 // $primary-font: 'Montserrat', sans-serif;
 $secondary-font: 'Raleway', sans-serif;
 
-body{
-    margin: 0;
-    font-family: $secondary-font;
+body {
+  margin: 0;
+  font-family: $secondary-font;
 
-    table{
-        width: 100%;
-    }
+  table {
+    width: 100%;
+  }
+
+  .success-snackbar {
+    background: mat-color(mat-palette($mat-green, 300, #ffc7c7, #ff6161)) !important;
+  }
+
+  .error-snackbar {
+    background: mat-color(mat-palette($mat-red, 300, #ffc7c7, #ff6161)) !important;
+  }
 }
