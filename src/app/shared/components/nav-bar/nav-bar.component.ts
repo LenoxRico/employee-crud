@@ -16,15 +16,15 @@ export class NavBarComponent implements OnInit {
   src = 'assets/logo.gif';
   login: Observable<string>;
   languages = Languages;
-  selectedLanguage = DefaultLanguage;
+  selectedLanguage = DefaultLanguage.code;
 
   constructor(private authService: AuthService, private _router: Router, private translate: TranslateService) {}
 
   ngOnInit() {
     this.login = this.authService.getLoginStatus().pipe(tap(item => console.log(item)));
     if (Cookie.check('language')) {
-      this.selectedLanguage = Languages.find(lang => lang.code === Cookie.get('language'));
-    } 
+      this.selectedLanguage = Cookie.get('language');
+    }
   }
 
   checkLogin() {

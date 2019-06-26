@@ -1,0 +1,58 @@
+{
+    "alternative":{
+        "not-found":{
+            "text": "找不到页面。",
+            "button": "回去"
+        }
+    },
+    "customer-component":{
+        "customer-list":{
+            "title": "客户名单",
+            "table-header-name":"姓名",
+            "table-header-lastname":"姓氏"
+        },
+        "customer-modal":{
+            "title": "客户详细信息",
+            "zip":"邮政编码",
+            "button-cancel":"关闭"
+        }
+    },
+    "login":{
+        "title": "登录",
+        "user": "用户",
+        "password":"密码",
+        "button-login":"登录"
+    },
+    "main-component":{
+        "cancel":{
+            "title":"您确定要删除员工 {{employee}} 吗？",
+            "content":"这个动作无法撤消",
+            "button-cancel":"取消",
+            "button-accept":"接受"
+        },
+        "employee-modal":{
+            "title":"员工细节",
+            "name":"姓名",
+            "age":"年龄",
+            "age-prefix":"{{age}} 岁",
+            "salary":"工资",
+            "seniority":"工龄",
+            "button-edit":"编辑",
+            "button-cancel":"取消",
+            "button-accept":"接受"
+        },
+        "user-list":{
+            "title":"员工名单",
+            "filter":"过滤器",
+            "name":"姓名",
+            "age":"年龄",
+            "age-prefix":"{{age}} 岁"
+        }
+    },
+    "shared":{
+        "nav-bar":{
+            "employees":"员工",
+            "customers":"客户"
+        }
+    }
+}

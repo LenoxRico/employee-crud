@@ -10,14 +10,13 @@ import { Cookie } from 'ng2-cookies';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'CAPCO';
   show = false;
 
   constructor(private coreService: CoreService, private translate: TranslateService) {
-    if(Cookie.check('language')){
+    if (Cookie.check('language')) {
       translate.setDefaultLang(Cookie.get('language'));
       translate.use(Cookie.get('language'));
-    }else{
+    } else {
       translate.setDefaultLang(DefaultLanguage.code);
       translate.use(DefaultLanguage.code);
     }

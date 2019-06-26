@@ -10,7 +10,7 @@
     </button>
 
     <mat-form-field class="language-selection">
-      <mat-select [(value)]="selectedLanguage.code" (selectionChange)="useLanguage($event.value)">
+      <mat-select [(value)]="selectedLanguage" (selectionChange)="useLanguage($event.value)">
         <mat-option *ngFor="let language of languages" [value]="language.code">
           {{ language.name }}
         </mat-option>
