@@ -18,10 +18,10 @@
         }
     },
     "login":{
-        "title": "Login",
+        "title": "S'identifier",
         "user": "Utilisateur",
         "password":"Mot de passe",
-        "button-login":"Login"
+        "button-login":"S'identifier"
     },
     "main-component":{
         "cancel":{

@@ -26,9 +26,7 @@ export class AuthService {
     });
     const options = { headers };
 
-    this._http
-      .post(this.authApi, { grant_type: 'client_credentials' }, options)
-      .subscribe(data => this.saveToken(data), err => alert('Invalid Credentials'));
+    return this._http.post(this.authApi, { grant_type: 'client_credentials' }, options);
   }
 
   saveToken(token) {
