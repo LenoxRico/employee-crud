@@ -21,7 +21,7 @@ export class UsersListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private dialog: MatDialog, private store: Store<any>, private employeeService: EmployeeService) {
-    this.employeeStorage$ = this.store.select(state => state.employee.employees);
+    this.employeeStorage$ = this.store.select(state => (state.employee ? state.employee.employees : []));
   }
 
   ngOnInit() {
